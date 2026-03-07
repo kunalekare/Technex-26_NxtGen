@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS calc_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cost DECIMAL(15, 2) NOT NULL,
+    years INT NOT NULL,
+    inflation DECIMAL(5, 2) NOT NULL,
+    created INT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

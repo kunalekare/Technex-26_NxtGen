@@ -1,0 +1,8 @@
+name: 'Investment Calculator API'
+type: module
+description: 'Provides REST endpoints for Goal-Based Investment calculations.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:rest
+  - drupal:serialization

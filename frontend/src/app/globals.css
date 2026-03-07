@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --color-blue: #224c87;
+  --color-red: #da3832;
+  --color-grey: #919090;
+
+  /* Background and Text */
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+@layer base {
+  html {
+    /* Primary font Montserrat, fallbacks Arial and Verdana */
+    font-family: var(--font-montserrat), Arial, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+  }
+
+  /* WCAG 2.1 AA Focus States */
+  :focus-visible {
+    outline: 3px solid var(--color-red);
+    outline-offset: 2px;
+  }
+
+  /* Accessibility: Reduce motion if user prefers */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+
+  /* Custom Range Slider Styling */
+  input[type="range"] {
+    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-300;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply h-6 w-6 appearance-none rounded-full border-2 border-white bg-[#224c87] transition-all active:bg-[#da3832];
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    @apply h-6 w-6 appearance-none rounded-full border-2 border-white bg-[#224c87] transition-all hover:scale-110 active:bg-[#da3832];
+  }
+
+  /* Standard Input Styling */
+  .input-field {
+    @apply w-full rounded border-2 border-[#919090] p-3 transition-colors focus:border-[#224c87] focus:outline-none;
+  }
+}
