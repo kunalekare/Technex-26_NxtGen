@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Brand Colors */
   --color-blue: #224c87;
@@ -9,6 +12,11 @@
   /* Background and Text */
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 229, 231, 235;
+  --background-rgb: 17, 24, 39;
 }
 
 @layer base {
@@ -22,6 +30,7 @@
   body {
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-rgb));
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   /* WCAG 2.1 AA Focus States */
@@ -45,7 +54,7 @@
 
   /* Custom Range Slider Styling */
   input[type="range"] {
-    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-300;
+    @apply h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-300 dark:bg-gray-600;
     touch-action: manipulation;
   }
 
