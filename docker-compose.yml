@@ -9,6 +9,9 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
     ports:
       - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./frontend/src/db/init.sql:/docker-entrypoint-initdb.d/01-sip-calculator.sql
 
   # Drupal (PHP 8.1)
   cms:
@@ -26,8 +29,19 @@ services:
     image: node:22.11.0
     container_name: calc-frontend
     working_dir: /app
+    depends_on:
+      - db
     volumes:
       - ./frontend:/app
     ports:
       - "3000:3000"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+      MYSQL_DATABASE: sip_calculator
     command: "npm run dev"
+
+volumes:
+  db_data:

@@ -1,9 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Slider } from "./ui/Slider";
 import { Input } from "./ui/Input";
 import { useCalculator, GoalType } from "@/hooks/useCalculator";
+import { useCalculationHistory } from "@/hooks/useCalculationHistory";
+import CalculationHistory from "./CalculationHistory";
+import type { CalculationRecord } from "@/types/calculation";
 import { formatCurrency } from "@/utils/formatters";
 
 export default function InvestmentForm() {
@@ -32,6 +35,40 @@ export default function InvestmentForm() {
     });
 
     const principalPercent = Math.round((results.totalInvestment / results.futureValue) * 100);
+
+    // Calculation History
+    const { history, isLoading: historyLoading, error: historyError, fetchHistory, saveCalculation } = useCalculationHistory();
+
+    useEffect(() => {
+        fetchHistory();
+    }, [fetchHistory]);
+
+    const handleSave = async () => {
+        await saveCalculation({
+            presentCost,
+            years,
+            inflationRate,
+            annualReturn,
+            stepUpRate,
+            goalType,
+            retirementYears,
+            postRetirementReturn,
+            isTaxEnabled,
+            ...results,
+        });
+    };
+
+    const handleLoad = (record: CalculationRecord) => {
+        setPresentCost(record.presentCost);
+        setYears(record.years);
+        setInflationRate(record.inflationRate);
+        setAnnualReturn(record.annualReturn);
+        setStepUpRate(record.stepUpRate);
+        setGoalType(record.goalType);
+        setRetirementYears(record.retirementYears);
+        setPostRetirementReturn(record.postRetirementReturn);
+        setIsTaxEnabled(record.isTaxEnabled);
+    };
 
     return (
         <div className="w-full max-w-7xl mx-auto p-4 md:p-8 lg:p-12">
@@ -311,6 +348,15 @@ export default function InvestmentForm() {
                                         </div>
                                     </div>
                                 </div>
+
+                                <button
+                                    onClick={handleSave}
+                                    className="w-full mt-6 py-4 bg-white/10 border-2 border-white/20 text-white
+                                               font-bold text-sm uppercase tracking-widest rounded-2xl
+                                               hover:bg-white/20 transition-all"
+                                >
+                                    Save This Calculation
+                                </button>
                             </div>
                         </section>
 
@@ -397,6 +443,16 @@ export default function InvestmentForm() {
                         </div>
                     </div>
                 </section>
+            </div>
+            {/* Calculation History */}
+            <div className="lg:col-span-12 mt-8 lg:mt-12 border-t border-gray-100 pt-8 lg:pt-12">
+                <CalculationHistory
+                    history={history}
+                    isLoading={historyLoading}
+                    error={historyError}
+                    onLoad={handleLoad}
+                    onRefresh={fetchHistory}
+                />
             </div>
         </div>
     );
