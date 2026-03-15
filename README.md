@@ -1,4 +1,4 @@
-# Goal-Based Investment Calculator
+# Goal-Based Investment Calculator [Preview](https://technex-26-nxt-gen.vercel.app/) 
 
 **Technex-26 Hackathon Submission | Team NxtGen**
 
