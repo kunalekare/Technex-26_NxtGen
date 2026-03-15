@@ -71,31 +71,31 @@ export default function InvestmentForm() {
     };
 
     return (
-        <div className="w-full max-w-7xl mx-auto p-4 md:p-8 lg:p-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+        <div className="w-full max-w-7xl mx-auto px-3 py-4 sm:p-4 md:p-8 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16">
                 {/* Input Section (Left) */}
-                <div className="lg:col-span-7 space-y-12">
-                    <div className="space-y-4">
+                <div className="lg:col-span-7 space-y-8 sm:space-y-12">
+                    <div className="space-y-3 sm:space-y-4">
                         <div className="inline-block px-3 py-1 bg-[#224c87]/10 text-[#224c87] text-[10px] font-bold uppercase tracking-[0.2em] rounded-full">
                             Personal Financial Planner
                         </div>
-                        <h2 className="text-4xl lg:text-5xl font-black text-[#224c87] tracking-tight">Design Your Future.</h2>
-                        <p className="text-[#919090] text-lg max-w-xl">Fine-tune your financial goals with precision. See the impact of inflation and market growth in real-time.</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#224c87] tracking-tight">Design Your Future.</h2>
+                        <p className="text-[#919090] text-base sm:text-lg max-w-xl">Fine-tune your financial goals with precision. See the impact of inflation and market growth in real-time.</p>
                     </div>
 
                     {/* Goal Type Selection */}
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-4">
-                            <div className="w-8 h-px bg-gray-200"></div>
-                            <span className="text-[10px] font-bold text-[#919090] uppercase tracking-[0.3em]">Select Goal Strategy</span>
+                    <div className="space-y-4 sm:space-y-6">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                            <div className="w-6 sm:w-8 h-px bg-gray-200"></div>
+                            <span className="text-[10px] font-bold text-[#919090] uppercase tracking-[0.3em] whitespace-nowrap">Select Goal Strategy</span>
                             <div className="flex-1 h-px bg-gray-200"></div>
                         </div>
-                        <div className="flex flex-wrap gap-3">
+                        <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 sm:gap-3">
                             {(['Custom', 'Education', 'Medical', 'Lifestyle', 'Retirement'] as GoalType[]).map((type) => (
                                 <button
                                     key={type}
                                     onClick={() => setGoalType(type)}
-                                    className={`px-6 py-3 rounded-2xl text-xs font-bold transition-all duration-300 transform hover:-translate-y-0.5 ${goalType === type
+                                    className={`px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold transition-all duration-300 transform hover:-translate-y-0.5 ${goalType === type
                                         ? 'bg-[#224c87] text-white shadow-xl shadow-[#224c87]/20 scale-105'
                                         : 'bg-white border-2 border-gray-100 text-[#919090] hover:border-[#224c87]/30 hover:text-[#224c87]'
                                         }`}
@@ -107,14 +107,14 @@ export default function InvestmentForm() {
                     </div>
 
                     {/* Form Sections */}
-                    <div className="space-y-12">
+                    <div className="space-y-8 sm:space-y-12">
                         {/* Section 1: Goal Foundations */}
-                        <section className="space-y-8">
-                            <h3 className="text-lg font-bold text-[#224c87] flex items-center gap-3">
+                        <section className="space-y-6 sm:space-y-8">
+                            <h3 className="text-base sm:text-lg font-bold text-[#224c87] flex items-center gap-3">
                                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#224c87] text-white text-[10px]">1</span>
                                 Goal Foundations
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-6 sm:gap-y-10">
                                 <div className="space-y-4">
                                     <Slider
                                         id="cost"
@@ -156,12 +156,12 @@ export default function InvestmentForm() {
                         </section>
 
                         {/* Section 2: Market Variables */}
-                        <section className="space-y-8">
-                            <h3 className="text-lg font-bold text-[#224c87] flex items-center gap-3">
+                        <section className="space-y-6 sm:space-y-8">
+                            <h3 className="text-base sm:text-lg font-bold text-[#224c87] flex items-center gap-3">
                                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#224c87] text-white text-[10px]">2</span>
                                 Market Variables
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-6 sm:gap-y-10">
                                 <div className="space-y-4">
                                     <Slider
                                         id="inflation"
@@ -206,17 +206,17 @@ export default function InvestmentForm() {
 
                         {/* Conditionals */}
                         {goalType === 'Retirement' && (
-                            <div className="p-8 bg-gradient-to-br from-[#224c87]/5 to-transparent rounded-3xl border-2 border-[#224c87]/10 space-y-8 animate-in fade-in slide-in-from-bottom-4">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-white rounded-2xl shadow-sm border border-[#224c87]/10">
-                                        <span className="text-2xl font-black text-[#224c87]">🌴</span>
+                            <div className="p-4 sm:p-8 bg-gradient-to-br from-[#224c87]/5 to-transparent rounded-2xl sm:rounded-3xl border-2 border-[#224c87]/10 space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-4">
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                    <div className="p-2 sm:p-3 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-[#224c87]/10">
+                                        <span className="text-xl sm:text-2xl font-black text-[#224c87]">🌴</span>
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-bold text-[#224c87]">Retirement Phase</h3>
-                                        <p className="text-xs text-[#919090]">Define your post-retirement variables for precise decumulation.</p>
+                                        <h3 className="text-lg sm:text-xl font-bold text-[#224c87]">Retirement Phase</h3>
+                                        <p className="text-[10px] sm:text-xs text-[#919090]">Define your post-retirement variables for precise decumulation.</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                                     <div className="space-y-4">
                                         <Slider
                                             id="ret-years"
@@ -258,13 +258,13 @@ export default function InvestmentForm() {
                         )}
 
                         {/* Section 3: Savings Strategy */}
-                        <section className="space-y-8">
-                            <h3 className="text-lg font-bold text-[#224c87] flex items-center gap-3">
+                        <section className="space-y-6 sm:space-y-8">
+                            <h3 className="text-base sm:text-lg font-bold text-[#224c87] flex items-center gap-3">
                                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#224c87] text-white text-[10px]">3</span>
                                 Savings Strategy
                             </h3>
-                            <div className="p-8 bg-white border-2 border-gray-50 rounded-3xl shadow-sm space-y-8 transition-all hover:border-gray-100">
-                                <div className="flex items-center justify-between">
+                            <div className="p-4 sm:p-8 bg-white border-2 border-gray-50 rounded-2xl sm:rounded-3xl shadow-sm space-y-6 sm:space-y-8 transition-all hover:border-gray-100">
+                                <div className="flex items-center justify-between gap-3">
                                     <div>
                                         <h4 className="text-md font-bold text-[#224c87]">Step-Up Acceleration</h4>
                                         <p className="text-xs text-[#919090]">Increase savings annually by this percentage.</p>
@@ -289,33 +289,33 @@ export default function InvestmentForm() {
 
                 {/* Results Section (Right) */}
                 <div className="lg:col-span-5 relative">
-                    <div className="lg:sticky lg:top-8 space-y-8">
+                    <div className="lg:sticky lg:top-8 space-y-4 sm:space-y-8">
                         {/* Highlights Card */}
-                        <section className="bg-[#224c87] text-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-[#224c87]/30 relative overflow-hidden group">
+                        <section className="bg-[#224c87] text-white p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] shadow-2xl shadow-[#224c87]/30 relative overflow-hidden group">
                             {/* Decorative Background Elements */}
                             <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/5 rounded-full blur-3xl transition-all group-hover:bg-white/10"></div>
                             <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-[#da3832]/20 rounded-full blur-3xl"></div>
                             
-                            <div className="relative z-10 space-y-12">
+                            <div className="relative z-10 space-y-8 sm:space-y-12">
                                 <div>
-                                    <h3 className="text-white/60 uppercase tracking-[0.3em] font-black text-[10px] mb-4">Required Monthly Investment</h3>
+                                    <h3 className="text-white/60 uppercase tracking-[0.3em] font-black text-[10px] mb-3 sm:mb-4">Required Monthly Investment</h3>
                                     <div className="flex flex-col gap-1">
-                                        <span className="text-5xl md:text-6xl font-black tracking-tighter leading-none">
+                                        <span className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-none break-all">
                                             {formatCurrency(results.monthlySIP)}
                                         </span>
                                         {stepUpRate > 0 && <span className="text-sm font-bold text-white/50 ml-1">starting monthly</span>}
                                     </div>
                                 </div>
 
-                                <div className="space-y-10 pt-10 border-t border-white/10">
-                                    <div className="flex justify-between items-end">
-                                        <div>
+                                <div className="space-y-8 sm:space-y-10 pt-8 sm:pt-10 border-t border-white/10">
+                                    <div className="flex justify-between items-end gap-2">
+                                        <div className="min-w-0">
                                             <h4 className="text-white/50 text-[10px] uppercase font-black tracking-[0.2em] mb-2">Target Corpus</h4>
-                                            <p className="text-3xl font-black">{formatCurrency(results.futureValue)}</p>
+                                            <p className="text-2xl sm:text-3xl font-black break-all">{formatCurrency(results.futureValue)}</p>
                                         </div>
-                                        <div className="text-right">
+                                        <div className="text-right shrink-0">
                                             <h4 className="text-white/50 text-[10px] uppercase font-black tracking-[0.2em] mb-2">Horizon</h4>
-                                            <p className="text-2xl font-bold">{years} <span className="text-sm font-normal opacity-50">Years</span></p>
+                                            <p className="text-xl sm:text-2xl font-bold">{years} <span className="text-sm font-normal opacity-50">Years</span></p>
                                         </div>
                                     </div>
 
@@ -351,9 +351,9 @@ export default function InvestmentForm() {
 
                                 <button
                                     onClick={handleSave}
-                                    className="w-full mt-6 py-4 bg-white/10 border-2 border-white/20 text-white
-                                               font-bold text-sm uppercase tracking-widest rounded-2xl
-                                               hover:bg-white/20 transition-all"
+                                    className="w-full mt-4 sm:mt-6 py-3 sm:py-4 bg-white/10 border-2 border-white/20 text-white
+                                               font-bold text-xs sm:text-sm uppercase tracking-widest rounded-xl sm:rounded-2xl
+                                               hover:bg-white/20 active:bg-white/25 transition-all"
                                 >
                                     Save This Calculation
                                 </button>
@@ -361,10 +361,10 @@ export default function InvestmentForm() {
                         </section>
 
                         {/* Impact Cards */}
-                        <div className="grid grid-cols-1 gap-4">
-                            <div className="p-6 bg-white border-2 border-gray-50 rounded-[2rem] shadow-sm flex items-center justify-between group transition-all hover:shadow-xl hover:border-[#224c87]/5">
-                                <div className="flex items-center gap-5">
-                                    <div className={`p-4 rounded-2xl transition-all ${isTaxEnabled ? 'bg-[#da3832] text-white' : 'bg-gray-50 text-[#919090]'}`}>
+                        <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                            <div className="p-4 sm:p-6 bg-white border-2 border-gray-50 rounded-xl sm:rounded-[2rem] shadow-sm flex items-center justify-between gap-3 sm:gap-4 group transition-all hover:shadow-xl hover:border-[#224c87]/5">
+                                <div className="flex items-center gap-3 sm:gap-5 min-w-0">
+                                    <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all shrink-0 ${isTaxEnabled ? 'bg-[#da3832] text-white' : 'bg-gray-50 text-[#919090]'}`}>
                                         <span className="font-black text-xs uppercase tracking-tighter">Tax</span>
                                     </div>
                                     <div>
@@ -380,13 +380,13 @@ export default function InvestmentForm() {
                                 </button>
                             </div>
 
-                            <div className="p-6 bg-gray-50 border-2 border-transparent rounded-[2rem] flex items-start gap-5">
-                                <div className="p-4 bg-white rounded-2xl shadow-sm text-[#224c87] shrink-0">
-                                    <span className="font-black text-xl">ℹ</span>
+                            <div className="p-4 sm:p-6 bg-gray-50 border-2 border-transparent rounded-xl sm:rounded-[2rem] flex items-start gap-3 sm:gap-5">
+                                <div className="p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl shadow-sm text-[#224c87] shrink-0">
+                                    <span className="font-black text-lg sm:text-xl">ℹ</span>
                                 </div>
-                                <div>
+                                <div className="min-w-0">
                                     <h4 className="font-bold text-[#224c87] text-sm mb-1 uppercase tracking-wider">Planner&apos;s Insight</h4>
-                                    <p className="text-xs text-[#919090] leading-relaxed">
+                                    <p className="text-[11px] sm:text-xs text-[#919090] leading-relaxed">
                                         Factoring in <strong>{results.adjustedInflation}%</strong> inflation, your goal of <strong>{formatCurrency(presentCost)}</strong> today will require <strong>{formatCurrency(results.futureValue)}</strong> in <strong>{years} years</strong>.
                                     </p>
                                 </div>
@@ -397,14 +397,14 @@ export default function InvestmentForm() {
             </div>
 
             {/* Methodology & Educational Intent */}
-            <div className="lg:col-span-12 mt-8 lg:mt-12 border-t border-gray-100 pt-8 lg:pt-12 space-y-12">
-                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                    <div className="space-y-4">
-                        <h3 className="text-xl lg:text-2xl font-bold text-[#224c87]">Mathematical Transparency</h3>
-                        <p className="text-[#919090] text-sm leading-relaxed">
+            <div className="lg:col-span-12 mt-6 sm:mt-8 lg:mt-12 border-t border-gray-100 pt-6 sm:pt-8 lg:pt-12 space-y-8 sm:space-y-12">
+                <section className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+                    <div className="space-y-3 sm:space-y-4">
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#224c87]">Mathematical Transparency</h3>
+                        <p className="text-[#919090] text-xs sm:text-sm leading-relaxed">
                             We use industry-standard financial formulas to provide accurate estimations. Transparency is key to financial literacy.
                         </p>
-                        <div className="bg-gray-50 p-6 rounded-xl space-y-4 text-xs md:text-sm font-mono text-[#224c87]">
+                        <div className="bg-gray-50 p-4 sm:p-6 rounded-xl space-y-4 text-[11px] sm:text-xs md:text-sm font-mono text-[#224c87] overflow-x-auto">
                             <div className="space-y-2">
                                 <p className="font-bold underline">Goal Inflation (Future Value):</p>
                                 <p>FV = PV × (1 + i)ⁿ</p>
@@ -430,14 +430,14 @@ export default function InvestmentForm() {
                         </div>
                     </div>
 
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-[#224c87]">Educational Intent</h3>
-                        <p className="text-[#919090] text-sm leading-relaxed">
+                    <div className="space-y-3 sm:space-y-4">
+                        <h3 className="text-lg sm:text-xl font-bold text-[#224c87]">Educational Intent</h3>
+                        <p className="text-[#919090] text-xs sm:text-sm leading-relaxed">
                             This tool is designed to help you understand the dynamics of long-term wealth creation and the impact of inflation. It serves as an educational resource to model potential outcomes based on your inputs.
                         </p>
-                        <div className="bg-red-50 p-6 rounded-xl border border-red-100">
+                        <div className="bg-red-50 p-4 sm:p-6 rounded-xl border border-red-100">
                             <p className="text-red-800 text-xs font-bold uppercase tracking-widest mb-2">Notice</p>
-                            <p className="text-red-700 text-sm leading-relaxed">
+                            <p className="text-red-700 text-xs sm:text-sm leading-relaxed">
                                 This calculator provides estimations for informational purposes only. It does not constitute financial advice, product recommendations, or a guarantee of future returns. Always consult with a certified financial professional before making investment decisions.
                             </p>
                         </div>
@@ -445,7 +445,7 @@ export default function InvestmentForm() {
                 </section>
             </div>
             {/* Calculation History */}
-            <div className="lg:col-span-12 mt-8 lg:mt-12 border-t border-gray-100 pt-8 lg:pt-12">
+            <div className="lg:col-span-12 mt-6 sm:mt-8 lg:mt-12 border-t border-gray-100 pt-6 sm:pt-8 lg:pt-12">
                 <CalculationHistory
                     history={history}
                     isLoading={historyLoading}
